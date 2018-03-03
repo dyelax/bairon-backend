@@ -30,4 +30,3 @@ $ cd ../bairon/
 $ npm install
 $ npm start
 ```
-
