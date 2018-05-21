@@ -13,10 +13,17 @@ $ . venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
+Set some environment variables:
+
+```
+$ export BAIRON_SETTINGS=bairon.config
+$ export FLASK_APP=server.py
+```
+
 Then,
 
 ```
-$ flask run
+$ flask run --with-threads
 ```
 
 For me this runs on 127.0.0.1:5000 by default, and that's hard coded in App.js
