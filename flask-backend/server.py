@@ -1,5 +1,5 @@
 from flask import Flask, request
-import re, string, json, requests, random
+import re, string, json, random
 from flask_cors import CORS
 from datamuse import datamuse
 from PyDictionary import PyDictionary

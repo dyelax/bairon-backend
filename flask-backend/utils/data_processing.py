@@ -9,16 +9,18 @@ from pickle import Unpickler
 
 UNK_TOKEN = '*UNK*'
 DATA_DIR = '../../poem_generator/data/poetryDB/txt'
+DATA_READER_PATH = 'data_reader.pkl'
 
 def get_vocab():
-    if os.path.exists(DATA_DIR):
+    if os.path.exists(DATA_READER_PATH):
         print 'Loading vocab...'
-        with open('data_reader.pkl', 'rb') as f:
+        with open(DATA_READER_PATH, 'rb') as f:
             data_reader = Unpickler(f).load()
             vocab = data_reader.get_vocab()
 
             print 'Loaded!'
     else:
+        assert os.path.exists(DATA_DIR), 'DATA_DIR not found'
         print 'Creating data reader...'
         data_reader = DataReader(DATA_DIR)
 
