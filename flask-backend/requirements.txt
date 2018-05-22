@@ -14,6 +14,7 @@ futures==3.2.0
 gast==0.2.0
 goslate==1.5.1
 grpcio==1.12.0
+gunicorn==19.8.1
 html5lib==0.9999999
 idna==2.6
 itsdangerous==0.24
