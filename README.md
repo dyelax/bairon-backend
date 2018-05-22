@@ -7,7 +7,6 @@ To start running the flask server, ideally spin up a virtual env, then install
 the requirements:
 
 ```
-$ cd bairon/web/flask-backend/
 $ virtualenv venv
 $ . venv/bin/activate
 $ pip install -r requirements.txt
