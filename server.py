@@ -93,3 +93,7 @@ def split_poem_into_words(poem):
   for word in poem:
     word = pattern.sub('', word)
   return poem
+
+if __name__ == '__main__':
+  from os import environ
+  app.run(debug=False, port=environ.get("PORT", 5000), host='0.0.0.0')
