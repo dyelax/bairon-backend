@@ -7,6 +7,10 @@ from PyDictionary import PyDictionary
 from generate_poem import generate_poem_suggestion
 from utils.data_processing import get_vocab
 
+import requests
+import json
+import os
+
 app = Flask(__name__)
 app.config.from_envvar('BAIRON_SETTINGS')
 CORS(app)
@@ -32,6 +36,8 @@ def thesaurus():
   poem = request.get_json()['poem']
   if not poem or poem == '':
     return "Please give us a poem"
+  else:
+    return poem
 
   poem = split_poem_into_words(poem)
   length = len(poem)
@@ -54,7 +60,20 @@ def thesaurus_word(word):
   return json.dumps(result)
 
 def thesaurus_helper(word):
-  return dictionary_api.synonym(word)
+  app_id = os.environ['OXFORD_APP_ID']
+  app_key = os.environ['OXFORD_APP_KEY']
+  language = 'en'
+  url = 'https://od-api.oxforddictionaries.com:443/api/v1/entries/' + language + '/' + word.lower() + '/synonyms'
+  
+  r = requests.get(url, headers = {'app_id': app_id, 'app_key': app_key})
+  
+  if r.status_code != 200:
+    return "No results"
+  
+  synonyms = r.json()["results"][0]["lexicalEntries"][0]["entries"][0]["senses"][0]["subsenses"][0]["synonyms"]
+  synonyms = list(map(lambda x: x['text'], synonyms))
+
+  return synonyms[:5]
 
 @app.route('/rhyme', methods=['POST'])
 def rhyme():
