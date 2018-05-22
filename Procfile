@@ -1,1 +1,1 @@
-worker: flask run --with-threads
+web: flask run --with-threads
