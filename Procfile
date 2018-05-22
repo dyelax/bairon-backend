@@ -1,1 +1,1 @@
-web: gunicorn server:app --log-file=-
+web: flask run --with-threads
