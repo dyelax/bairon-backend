@@ -1,1 +1,1 @@
-web: flask run --with-threads
+web: gunicorn server:app --preload
