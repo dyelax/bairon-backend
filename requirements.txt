@@ -24,7 +24,7 @@ MarkupSafe==1.0
 mock==2.0.0
 numpy==1.14.3
 pbr==4.0.3
-protobuf==3.5.2.post1
+protobuf==3.15.0
 PyDictionary==1.5.2
 requests==2.18.4
 six==1.11.0
